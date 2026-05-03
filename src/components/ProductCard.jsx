@@ -1,0 +1,86 @@
+import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
+
+const ProductCard = ({ product }) => {
+  const navigate = useNavigate();
+  const { addToCart } = useCart();
+
+  const handleAddToCart = (e) => {
+    e.stopPropagation();
+    addToCart(product);
+  };
+
+  const handleBuyNow = (e) => {
+    e.stopPropagation();
+    addToCart(product);
+    navigate('/checkout');
+  };
+
+  return (
+    <motion.div 
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      whileHover={{ y: -8 }}
+      onClick={() => navigate(`/product/${product.id}`)}
+      className="bg-white rounded-2xl border border-outline-variant/50 shadow-sm hover:shadow-xl hover:border-primary/50 transition-all p-4 group cursor-pointer h-full flex flex-col"
+    >
+      <div className="aspect-square bg-surface-container-low rounded-xl mb-4 flex items-center justify-center overflow-hidden relative border border-outline-variant/30">
+        {product.image ? (
+          <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        ) : (
+          <div className="text-center text-outline">
+            <p className="font-black text-2xl uppercase tracking-widest text-outline-variant">{product.code}</p>
+            <p className="text-xs font-bold mt-2">PRODUCT IMAGE</p>
+          </div>
+        )}
+        
+        {product.discount && (
+          <div className="absolute top-3 left-3 bg-error text-white text-xs font-black px-3 py-1 rounded-full tracking-wider shadow-sm">
+            {product.discount}% OFF
+          </div>
+        )}
+      </div>
+
+      <div className="flex items-center gap-1 text-accent text-sm mb-2">
+        <span className="material-symbols-outlined text-[16px]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+        <span className="material-symbols-outlined text-[16px]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+        <span className="material-symbols-outlined text-[16px]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+        <span className="material-symbols-outlined text-[16px]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+        <span className="material-symbols-outlined text-[16px]" style={{ fontVariationSettings: "'FILL' 1" }}>star_half</span>
+        <span className="text-outline text-xs ml-1 font-medium">(12)</span>
+      </div>
+
+      <div className="space-y-1 mb-4 flex-grow">
+        <h3 className="font-bold text-on-surface text-lg leading-tight group-hover:text-primary transition-colors">{product.name}</h3>
+        <p className="text-xs font-medium text-outline uppercase tracking-wider">Code: {product.code}</p>
+      </div>
+
+      <div className="flex items-end gap-3 mb-5 border-t border-outline-variant/30 pt-4">
+        <span className="text-2xl font-black text-on-surface leading-none">₹{product.price}</span>
+        {product.originalPrice > product.price && (
+          <span className="text-sm text-outline line-through font-bold mb-0.5">₹{product.originalPrice}</span>
+        )}
+      </div>
+
+      <div className="flex flex-col gap-2 mt-auto">
+        <button 
+          onClick={handleAddToCart}
+          className="w-full bg-primary/10 text-primary py-2.5 rounded-xl font-bold hover:bg-primary hover:text-white transition-all active:scale-95 flex items-center justify-center gap-2"
+        >
+          <span className="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+          Add to Cart
+        </button>
+        <button 
+          onClick={handleBuyNow}
+          className="w-full bg-secondary text-white py-2.5 rounded-xl font-bold hover:bg-secondary/90 transition-all active:scale-95 hover:shadow-lg hover:shadow-secondary/20 flex items-center justify-center gap-2"
+        >
+          <span className="material-symbols-outlined text-[20px]">bolt</span>
+          Buy Now
+        </button>
+      </div>
+    </motion.div>
+  );
+};
+
+export default ProductCard;
