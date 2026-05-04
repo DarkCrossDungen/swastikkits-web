@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="w-full bg-[#1a1a1a] text-white pt-16 pb-12 px-6">
       <div className="container-custom max-w-7xl mx-auto flex flex-col gap-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           
           {/* About Us */}
           <div>
@@ -66,14 +66,6 @@ const Footer = () => {
                 </p>
               </div>
             </div>
-          </div>
-
-          {/* Policies */}
-          <div>
-            <h4 className="font-display font-bold text-xl mb-6 tracking-tight">Policies</h4>
-            <ul className="flex flex-col gap-3 text-sm text-white/70 font-medium">
-              <li><a href="/return-policy" className="hover:text-orange-400 transition-colors">Return Policy</a></li>
-            </ul>
           </div>
 
           {/* Contact Us */}

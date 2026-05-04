@@ -84,10 +84,11 @@ const Navbar = () => {
 
       {/* Desktop Navigation */}
       <nav className="hidden md:flex items-center gap-8 font-display text-sm font-bold uppercase tracking-tight text-on-surface-variant">
+        <NavLink to="/" className={`${location.pathname === '/' ? 'text-primary' : 'hover:text-primary transition-colors'}`}>Home</NavLink>
         <NavLink to="/category?cat=BOARDS" className={`${currentCat === 'BOARDS' ? 'text-primary' : 'hover:text-primary transition-colors'}`}>Boards</NavLink>
         <NavLink to="/category?cat=SENSOR MODULES" className={`${currentCat === 'SENSOR MODULES' ? 'text-primary' : 'hover:text-primary transition-colors'}`}>Modules</NavLink>
         <NavLink to="/category?cat=COMPONENTS" className={`${currentCat === 'COMPONENTS' ? 'text-primary' : 'hover:text-primary transition-colors'}`}>Components</NavLink>
-        <NavLink to="/category?cat=SWASTIK KITS" className={`${currentCat === 'SWASTIK KITS' ? 'text-primary' : 'hover:text-primary transition-colors'}`}>Learning</NavLink>
+        <NavLink to="/category?cat=SWASTIK KITS" className={`${currentCat === 'SWASTIK KITS' ? 'text-primary' : 'hover:text-primary transition-colors'}`}>About Us</NavLink>
       </nav>
 
       <div className="flex items-center gap-2">
