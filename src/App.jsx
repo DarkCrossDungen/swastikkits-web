@@ -27,14 +27,6 @@ const ScrollToTop = () => {
   return null;
 };
 
-const ProtectedRoute = ({ children }) => {
-  const { currentUser } = useAuth();
-  if (!currentUser) {
-    return <Navigate to="/login" replace />;
-  }
-  return children;
-};
-
 function App() {
   return (
     <Router>
@@ -45,14 +37,14 @@ function App() {
             <Navbar />
             <div className="flex-grow">
               <Routes>
-                <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-                <Route path="/category" element={<ProtectedRoute><Category /></ProtectedRoute>} />
-                <Route path="/cart" element={<ProtectedRoute><Cart /></ProtectedRoute>} />
-                <Route path="/track" element={<ProtectedRoute><OrderTracking /></ProtectedRoute>} />
-                <Route path="/product/:id" element={<ProtectedRoute><ProductDetail /></ProtectedRoute>} />
-                <Route path="/checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
-                <Route path="/thank-you" element={<ProtectedRoute><ThankYou /></ProtectedRoute>} />
-                <Route path="/account" element={<ProtectedRoute><Account /></ProtectedRoute>} />
+                <Route path="/" element={<Home />} />
+                <Route path="/category" element={<Category />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/track" element={<OrderTracking />} />
+                <Route path="/product/:id" element={<ProductDetail />} />
+                <Route path="/checkout" element={<Checkout />} />
+                <Route path="/thank-you" element={<ThankYou />} />
+                <Route path="/account" element={<Account />} />
                 
                 {/* Public routes */}
                 <Route path="/login" element={<Login />} />
