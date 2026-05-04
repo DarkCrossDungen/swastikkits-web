@@ -181,7 +181,9 @@ const ProductDetail = () => {
                   <div className="border border-outline-variant/50 rounded-2xl overflow-hidden max-w-3xl">
                     <table className="w-full text-left border-collapse">
                       <tbody>
-                        {Object.entries(product.specifications).map(([key, value], index) => (
+                        {Object.entries(product.specifications)
+                          .filter(([key]) => key.toLowerCase() !== 'return policy')
+                          .map(([key, value], index) => (
                           <tr key={key} className={index % 2 === 0 ? 'bg-surface-container-low/50' : 'bg-white'}>
                             <td className="py-4 px-6 border-b border-outline-variant/30 font-bold text-on-surface capitalize w-1/3">{key}</td>
                             <td className="py-4 px-6 border-b border-outline-variant/30 text-outline">{value}</td>
