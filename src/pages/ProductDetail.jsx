@@ -124,8 +124,7 @@ const ProductDetail = () => {
                 <span className="material-symbols-outlined">add_shopping_cart</span>
                 ADD TO CART
               </button>
-              <button onClick={handleBuyNow} className="w-full btn-secondary h-14 text-lg flex items-center justify-center gap-3">
-                <span className="material-symbols-outlined">bolt</span>
+              <button onClick={handleBuyNow} className="w-full bg-emerald-600 text-white hover:bg-emerald-700 transition-all shadow-md hover:shadow-lg rounded-xl font-bold h-14 text-lg flex items-center justify-center gap-3">
                 BUY NOW
               </button>
 

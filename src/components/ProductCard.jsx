@@ -39,14 +39,6 @@ const ProductCard = ({ product }) => {
         )}
       </div>
 
-      <div className="flex items-center gap-1 text-accent text-sm mb-2">
-        <span className="material-symbols-outlined text-[16px]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-        <span className="material-symbols-outlined text-[16px]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-        <span className="material-symbols-outlined text-[16px]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-        <span className="material-symbols-outlined text-[16px]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-        <span className="material-symbols-outlined text-[16px]" style={{ fontVariationSettings: "'FILL' 1" }}>star_half</span>
-        <span className="text-outline text-xs ml-1 font-medium">(12)</span>
-      </div>
 
       <div className="space-y-1 mb-4 flex-grow">
         <h3 className="font-bold text-on-surface text-lg leading-tight group-hover:text-primary transition-colors">{product.name}</h3>
