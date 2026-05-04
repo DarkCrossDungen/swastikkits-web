@@ -1,17 +1,15 @@
 import { NavLink } from 'react-router-dom';
-import { motion } from 'framer-motion';
+
 
 const ThankYou = () => {
   return (
     <main className="min-h-screen pt-24 pb-20 px-4 flex items-center justify-center">
       <div className="text-center space-y-8 max-w-md">
-        <motion.div 
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
+        <div 
           className="w-24 h-24 bg-success/10 text-success rounded-full flex items-center justify-center mx-auto"
         >
           <span className="material-symbols-outlined text-6xl">check_circle</span>
-        </motion.div>
+        </div>
         
         <div className="space-y-4">
           <h1 className="text-4xl font-black text-on-surface leading-tight">Order Placed!</h1>

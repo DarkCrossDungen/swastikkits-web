@@ -81,7 +81,7 @@ const Category = () => {
   };
 
   return (
-    <main className="min-h-screen pt-24 pb-20 px-4">
+    <main className="min-h-screen pt-28 pb-20 px-4">
       <div className="container-custom">
         <header className="mb-10">
           <p className="text-[10px] font-black text-primary uppercase tracking-[0.2em] mb-2">Explore Our Collection</p>
@@ -90,30 +90,42 @@ const Category = () => {
           </h1>
           <p className="text-outline text-sm mb-6">{filteredProducts.length} products found</p>
 
-          {/* Search bar on category page */}
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search within this category..."
-            className="w-full max-w-md px-5 py-3 rounded-2xl border border-outline-variant bg-white outline-none focus:ring-2 focus:ring-primary/30 text-sm mb-6"
-          />
+          <div className="flex flex-col sm:flex-row gap-4 mb-10 w-full max-w-sm">
+            <div className="relative flex-1">
+              <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline pointer-events-none">category</span>
+              <select
+                value={selectedCategory}
+                onChange={(e) => handleCategorySelect(e.target.value)}
+                className="w-full pl-12 pr-10 py-4 rounded-2xl border border-outline-variant bg-white outline-none focus:ring-2 focus:ring-primary/30 text-sm shadow-sm appearance-none font-bold"
+              >
+                {ALL_CATEGORIES.map(cat => (
+                  <option key={cat} value={cat}>{cat}</option>
+                ))}
+              </select>
+              <span className="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline pointer-events-none">expand_more</span>
+            </div>
+          </div>
 
-          {/* Category filter buttons */}
-          <div className="flex gap-3 overflow-x-auto no-scrollbar pb-2">
-            {ALL_CATEGORIES.map((cat) => (
+          {/* Category filter buttons (Scrollable on mobile, wrapped on desktop) */}
+          <div className="flex flex-wrap gap-2 md:gap-3 pb-2">
+            {ALL_CATEGORIES.slice(0, 15).map((cat) => (
               <button
                 key={cat}
                 onClick={() => handleCategorySelect(cat)}
-                className={`px-5 py-2.5 rounded-2xl font-black text-xs transition-all whitespace-nowrap border-2 ${
+                className={`px-5 py-2.5 rounded-2xl font-black text-[10px] uppercase tracking-wider transition-all whitespace-nowrap border-2 ${
                   selectedCategory === cat
-                    ? 'bg-primary border-primary text-white shadow-lg shadow-primary/20'
+                    ? 'bg-primary border-primary text-white shadow-lg shadow-primary/20 scale-105'
                     : 'bg-white border-outline-variant text-outline hover:border-primary'
                 }`}
               >
                 {cat}
               </button>
             ))}
+            {ALL_CATEGORIES.length > 15 && (
+              <p className="text-[10px] font-black text-outline uppercase tracking-widest flex items-center px-4 italic">
+                + {ALL_CATEGORIES.length - 15} more in dropdown
+              </p>
+            )}
           </div>
         </header>
 

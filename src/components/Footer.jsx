@@ -1,19 +1,17 @@
-import { NavLink } from 'react-router-dom';
+
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-[#34495E] text-white pt-16 pb-12 px-6">
+    <footer className="w-full bg-[#1a1a1a] text-white pt-16 pb-12 px-6">
       <div className="container-custom max-w-7xl mx-auto flex flex-col gap-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           
           {/* About Us */}
           <div>
             <h4 className="font-display font-bold text-xl mb-6 tracking-tight">About Us</h4>
-            <ul className="flex flex-col gap-3 text-sm text-white/70 font-medium">
-              <li><NavLink to="/about" className="hover:text-orange-400 transition-colors">Who We Are</NavLink></li>
-              <li><NavLink to="/mission" className="hover:text-orange-400 transition-colors">Our Mission</NavLink></li>
-              <li><NavLink to="/vision" className="hover:text-orange-400 transition-colors">Our Vision</NavLink></li>
-            </ul>
+            <p className="text-sm text-white/70 font-medium leading-relaxed">
+              Swastik Electronics is Tamil Nadu's leading electronics component store, providing high-quality engineering kits and components for students and makers.
+            </p>
           </div>
 
           {/* Our Branches */}
@@ -74,7 +72,7 @@ const Footer = () => {
           <div>
             <h4 className="font-display font-bold text-xl mb-6 tracking-tight">Policies</h4>
             <ul className="flex flex-col gap-3 text-sm text-white/70 font-medium">
-              <li><NavLink to="/return-policy" className="hover:text-orange-400 transition-colors">Return Policy</NavLink></li>
+              <li><a href="/return-policy" className="hover:text-orange-400 transition-colors">Return Policy</a></li>
             </ul>
           </div>
 

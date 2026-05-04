@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 
@@ -8,7 +8,7 @@ const Cart = () => {
 
   if (cartItems.length === 0) {
     return (
-      <main className="min-h-screen pt-24 pb-20 px-4 flex flex-col items-center justify-center text-center">
+      <main className="min-h-screen pt-28 pb-20 px-4 flex flex-col items-center justify-center text-center">
         <div className="w-24 h-24 bg-surface-container-low rounded-full flex items-center justify-center text-outline mb-6">
           <span className="material-symbols-outlined text-5xl">shopping_cart</span>
         </div>
@@ -20,23 +20,20 @@ const Cart = () => {
   }
 
   return (
-    <main className="min-h-screen pt-24 pb-20 px-4">
+    <main className="min-h-screen pt-28 pb-20 px-4">
       <div className="container-custom max-w-6xl mx-auto">
         <h1 className="text-3xl font-black text-on-surface mb-10">Shopping Cart</h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           <div className="lg:col-span-2 space-y-6">
             {cartItems.map((item) => (
-              <motion.div 
+              <div 
                 key={item.id}
-                layout
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
                 className="bg-white rounded-3xl border border-outline-variant p-4 flex gap-4 items-center shadow-sm"
               >
                 <div className="w-24 h-24 bg-surface-container-low rounded-2xl flex-shrink-0 flex items-center justify-center border border-outline-variant/30 overflow-hidden">
                   {item.image ? (
-                    <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                    <img src={item.image} alt={item.name} className="w-full h-full object-contain p-1" />
                   ) : (
                     <span className="text-xs font-black text-outline uppercase">{item.code}</span>
                   )}
@@ -70,7 +67,7 @@ const Cart = () => {
                 >
                   <span className="material-symbols-outlined">delete</span>
                 </button>
-              </motion.div>
+              </div>
             ))}
           </div>
 

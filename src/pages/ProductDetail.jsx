@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+
 import { useCart } from '../context/CartContext';
 import realProducts from '../data/realProducts.json';
 
@@ -34,7 +34,7 @@ const ProductDetail = () => {
   };
 
   return (
-    <main className="pt-24 pb-20 px-4 sm:px-6 lg:px-8">
+    <main className="pt-28 pb-20 px-4 sm:px-6 lg:px-8">
       <div className="container-custom max-w-6xl mx-auto">
 
         {/* Breadcrumb */}
@@ -48,13 +48,11 @@ const ProductDetail = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Product Image */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
+          <div
             className="aspect-square bg-white rounded-3xl flex items-center justify-center border border-outline-variant/40 overflow-hidden relative shadow-sm"
           >
             {product.image ? (
-              <img src={product.image} alt={product.name} className="w-full h-full object-contain p-6" />
+              <img src={product.image} alt={product.name} className="w-full h-full object-contain p-4" />
             ) : (
               <div className="text-center text-outline p-8">
                 <span className="material-symbols-outlined text-8xl mb-3 block">inventory_2</span>
@@ -67,12 +65,10 @@ const ProductDetail = () => {
                 {product.discount} OFF
               </div>
             )}
-          </motion.div>
+          </div>
 
           {/* Product Info */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
+          <div
             className="flex flex-col"
           >
             <div className="mb-6">
@@ -134,27 +130,27 @@ const ProductDetail = () => {
               </button>
 
               <div className="grid grid-cols-3 gap-4 pt-6 border-t border-outline-variant/30">
-                <div className="text-center">
-                  <span className="material-symbols-outlined text-primary mb-1" style={{ fontVariationSettings: "'FILL' 1" }}>local_shipping</span>
-                  <p className="text-[10px] font-black text-outline uppercase">Fast Shipping</p>
+                <div className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-success text-[16px]">verified</span>
+                  <p className="text-[10px] font-black text-outline uppercase">Quality Tested</p>
                 </div>
                 <div className="text-center">
                   <span className="material-symbols-outlined text-primary mb-1" style={{ fontVariationSettings: "'FILL' 1" }}>verified_user</span>
                   <p className="text-[10px] font-black text-outline uppercase">Genuine Parts</p>
                 </div>
                 <div className="text-center">
-                  <span className="material-symbols-outlined text-primary mb-1" style={{ fontVariationSettings: "'FILL' 1" }}>support_agent</span>
-                  <p className="text-[10px] font-black text-outline uppercase">Tech Support</p>
+                  <span className="material-symbols-outlined text-primary mb-1" style={{ fontVariationSettings: "'FILL' 1" }}>workspace_premium</span>
+                  <p className="text-[10px] font-black text-outline uppercase">Trusted Brands</p>
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Tabs Section */}
         <section className="mt-16 pt-10 border-t border-outline-variant/30">
           <div className="flex gap-8 border-b border-outline-variant/50 mb-8 overflow-x-auto no-scrollbar">
-            {['description', 'specifications', 'shipping'].map((tab) => (
+            {['description', 'specifications'].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
@@ -164,7 +160,7 @@ const ProductDetail = () => {
               >
                 {tab}
                 {activeTab === tab && (
-                  <motion.div
+                  <div
                     layoutId="activeTab"
                     className="absolute bottom-0 left-0 right-0 h-1 bg-primary rounded-t-full"
                   />
@@ -175,13 +171,13 @@ const ProductDetail = () => {
 
           <div className="min-h-[180px]">
             {activeTab === 'description' && (
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="prose max-w-none">
+              <div className="prose max-w-none">
                 <p className="text-lg leading-relaxed text-on-surface">{product.description}</p>
-              </motion.div>
+              </div>
             )}
 
             {activeTab === 'specifications' && (
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+              <div>
                 {product.specifications && Object.keys(product.specifications).length > 0 ? (
                   <div className="border border-outline-variant/50 rounded-2xl overflow-hidden max-w-3xl">
                     <table className="w-full text-left border-collapse">
@@ -198,31 +194,9 @@ const ProductDetail = () => {
                 ) : (
                   <p className="text-outline text-lg">Detailed specifications coming soon.</p>
                 )}
-              </motion.div>
+              </div>
             )}
 
-            {activeTab === 'shipping' && (
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6 max-w-3xl">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                    <span className="material-symbols-outlined text-2xl">local_shipping</span>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-lg mb-1">Standard Delivery</h4>
-                    <p className="text-outline">Delivery within 2-3 business days across major cities in India. Remote areas may take up to 5 days.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-green-100 text-green-700 flex items-center justify-center shrink-0">
-                    <span className="material-symbols-outlined text-2xl">published_with_changes</span>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-lg mb-1">7 Days Return</h4>
-                    <p className="text-outline">Hassle-free returns for unused items in their original packaging.</p>
-                  </div>
-                </div>
-              </motion.div>
-            )}
           </div>
         </section>
       </div>

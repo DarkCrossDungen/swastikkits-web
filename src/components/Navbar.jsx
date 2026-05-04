@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
 import { useState, useEffect, useRef } from 'react';
@@ -14,6 +14,9 @@ const Navbar = () => {
   const [isSearching, setIsSearching] = useState(false);
   const searchRef = useRef(null);
   const navigate = useNavigate();
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const currentCat = params.get('cat');
 
   useEffect(() => {
     if (searchQuery.trim().length > 1) {
@@ -57,38 +60,34 @@ const Navbar = () => {
   };
 
   return (
-    <header className="bg-white fixed top-0 w-full z-50 border-b border-outline-variant flex items-center justify-between px-4 h-16">
+    <header className="bg-white fixed top-0 w-full z-50 border-b border-outline-variant flex items-center justify-between px-4 h-20">
       <div className="flex items-center gap-4">
-        <button className="material-symbols-outlined text-outline hover:bg-surface-container-low p-2 rounded-lg transition-colors md:hidden">
-          menu
-        </button>
-        <NavLink to="/" className="flex items-center gap-2">
+        <NavLink to="/" className="flex items-center gap-3 group">
           <img 
             src="/logo.png" 
             alt="Swastik Electronics" 
-            className="h-10 object-contain"
+            className="h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             onError={(e) => { 
               e.target.style.display = 'none'; 
               e.target.nextElementSibling.style.display = 'flex'; 
             }} 
           />
-          <div className="hidden items-center gap-2" style={{ display: 'none' }}>
-            <div className="w-9 h-9 bg-primary rounded-lg flex items-center justify-center text-white">
-              <span className="material-symbols-outlined text-2xl" style={{ fontVariationSettings: "'FILL' 1" }}>memory</span>
+          <div className="hidden items-center gap-3" style={{ display: 'none' }}>
+            <div className="relative">
+              <div className="w-11 h-11 bg-orange-500 rounded-2xl flex items-center justify-center text-white shadow-xl shadow-orange-100 group-hover:scale-110 transition-transform duration-300">
+                <span className="material-symbols-outlined text-2xl" style={{ fontVariationSettings: "'FILL' 1" }}>lightbulb</span>
+              </div>
             </div>
-            <h1 className="font-display font-black text-2xl tracking-tighter text-primary">
-              SWASTIK<span className="hidden sm:inline"> KITS</span>
-            </h1>
           </div>
         </NavLink>
       </div>
 
       {/* Desktop Navigation */}
       <nav className="hidden md:flex items-center gap-8 font-display text-sm font-bold uppercase tracking-tight text-on-surface-variant">
-        <NavLink to="/category" className={({ isActive }) => isActive ? 'text-primary' : 'hover:text-primary transition-colors'}>Boards</NavLink>
-        <NavLink to="/category" className="hover:text-primary transition-colors">Modules</NavLink>
-        <NavLink to="/category" className="hover:text-primary transition-colors">Components</NavLink>
-        <NavLink to="/category" className="hover:text-primary transition-colors">Learning</NavLink>
+        <NavLink to="/category?cat=BOARDS" className={`${currentCat === 'BOARDS' ? 'text-primary' : 'hover:text-primary transition-colors'}`}>Boards</NavLink>
+        <NavLink to="/category?cat=SENSOR MODULES" className={`${currentCat === 'SENSOR MODULES' ? 'text-primary' : 'hover:text-primary transition-colors'}`}>Modules</NavLink>
+        <NavLink to="/category?cat=COMPONENTS" className={`${currentCat === 'COMPONENTS' ? 'text-primary' : 'hover:text-primary transition-colors'}`}>Components</NavLink>
+        <NavLink to="/category?cat=SWASTIK KITS" className={`${currentCat === 'SWASTIK KITS' ? 'text-primary' : 'hover:text-primary transition-colors'}`}>Learning</NavLink>
       </nav>
 
       <div className="flex items-center gap-2">

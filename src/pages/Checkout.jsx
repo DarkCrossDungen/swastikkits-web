@@ -95,7 +95,7 @@ const Checkout = () => {
   const totalAmount = subtotal + deliveryCharges;
 
   return (
-    <main className="min-h-screen pt-24 pb-20 px-4 bg-gray-50">
+    <main className="min-h-screen pt-28 pb-20 px-4 bg-gray-50">
       <div className="container-custom max-w-6xl mx-auto">
         <h1 className="text-3xl font-black text-on-surface mb-10 text-center">Checkout</h1>
 

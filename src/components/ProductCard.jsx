@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 
@@ -18,16 +18,13 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <motion.div 
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -8 }}
+    <div 
       onClick={() => navigate(`/product/${product.id}`)}
-      className="bg-white rounded-2xl border border-outline-variant/50 shadow-sm hover:shadow-xl hover:border-primary/50 transition-all p-4 group cursor-pointer h-full flex flex-col"
+      className="bg-white rounded-2xl border border-outline-variant/50 shadow-sm hover:shadow-lg hover:border-primary/30 transition-shadow p-4 group cursor-pointer h-full flex flex-col"
     >
       <div className="aspect-square bg-surface-container-low rounded-xl mb-4 flex items-center justify-center overflow-hidden relative border border-outline-variant/30">
         {product.image ? (
-          <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <img src={product.image} alt={product.name} className="w-full h-full object-contain p-2" />
         ) : (
           <div className="text-center text-outline">
             <p className="font-black text-2xl uppercase tracking-widest text-outline-variant">{product.code}</p>
@@ -79,7 +76,7 @@ const ProductCard = ({ product }) => {
           Buy Now
         </button>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

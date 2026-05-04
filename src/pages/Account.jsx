@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { collection, query, where, getDocs, orderBy } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useAuth } from '../context/AuthContext';
-import { motion } from 'framer-motion';
+
 
 const Account = () => {
   const { currentUser, logout } = useAuth();
@@ -44,7 +44,7 @@ const Account = () => {
   if (!currentUser) return null;
 
   return (
-    <main className="min-h-screen pt-24 pb-20 px-4">
+    <main className="min-h-screen pt-28 pb-20 px-4">
       <div className="container-custom max-w-5xl mx-auto">
         <div className="flex flex-col md:flex-row gap-10 items-start">
           
@@ -87,10 +87,8 @@ const Account = () => {
             ) : orders.length > 0 ? (
               <div className="space-y-6">
                 {orders.map((order) => (
-                  <motion.div 
+                  <div 
                     key={order.id}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
                     className="bg-white rounded-3xl border border-outline-variant p-6 shadow-sm hover:shadow-md transition-shadow"
                   >
                     <div className="flex justify-between items-start mb-4">
@@ -123,7 +121,7 @@ const Account = () => {
                       </p>
                       <p className="text-xl font-black text-primary">₹{order.totalAmount}</p>
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             ) : (
