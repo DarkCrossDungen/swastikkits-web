@@ -72,7 +72,6 @@ const ProductCard = ({ product }) => {
           onClick={handleBuyNow}
           className="w-full bg-emerald-600 text-white py-2.5 rounded-xl font-bold hover:bg-emerald-700 transition-all active:scale-95 hover:shadow-lg hover:shadow-emerald-600/20 flex items-center justify-center gap-2"
         >
-          <span className="material-symbols-outlined text-[20px]">bolt</span>
           Buy Now
         </button>
       </div>

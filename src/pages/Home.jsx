@@ -34,10 +34,6 @@ const Home = () => {
             {/* --- LEFT COLUMN: TEXT CONTENT --- */}
             <div className="flex flex-col items-start text-left space-y-8">
               <div className="flex flex-col items-start space-y-6">
-                <span className="inline-flex items-center gap-2 px-4 py-2 bg-orange-50 border border-orange-200 rounded-full text-orange-600 text-[10px] sm:text-xs font-black uppercase tracking-widest">
-                  <span className="w-2 h-2 bg-orange-500 rounded-full" />
-                  Tamil Nadu's #1 Electronics Store
-                </span>
 
                 <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black leading-[1.05] text-gray-900">
                   Build Your{' '}
@@ -183,7 +179,7 @@ const Home = () => {
           <h2 className="text-3xl font-black mb-2">Featured Products</h2>
           <p className="text-outline">Hand-picked from every category</p>
         </div>
-        <div className="container-custom grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
+        <div className="container-custom grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-5">
           {featuredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

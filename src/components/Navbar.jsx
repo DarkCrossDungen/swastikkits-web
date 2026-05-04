@@ -60,7 +60,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="bg-white fixed top-0 w-full z-50 border-b border-outline-variant flex items-center justify-between px-4 h-20">
+    <header className="bg-[#1a1a1a] fixed top-0 w-full z-50 border-b border-white/10 flex items-center justify-between px-4 h-20">
       <div className="flex items-center gap-4">
         <NavLink to="/" className="flex items-center gap-3 group">
           <img 
@@ -83,18 +83,18 @@ const Navbar = () => {
       </div>
 
       {/* Desktop Navigation */}
-      <nav className="hidden md:flex items-center gap-8 font-display text-sm font-bold uppercase tracking-tight text-on-surface-variant">
-        <NavLink to="/" className={`${location.pathname === '/' ? 'text-primary' : 'hover:text-primary transition-colors'}`}>Home</NavLink>
-        <NavLink to="/category?cat=BOARDS" className={`${currentCat === 'BOARDS' ? 'text-primary' : 'hover:text-primary transition-colors'}`}>Boards</NavLink>
-        <NavLink to="/category?cat=SENSOR MODULES" className={`${currentCat === 'SENSOR MODULES' ? 'text-primary' : 'hover:text-primary transition-colors'}`}>Modules</NavLink>
-        <NavLink to="/category?cat=COMPONENTS" className={`${currentCat === 'COMPONENTS' ? 'text-primary' : 'hover:text-primary transition-colors'}`}>Components</NavLink>
-        <NavLink to="/category?cat=SWASTIK KITS" className={`${currentCat === 'SWASTIK KITS' ? 'text-primary' : 'hover:text-primary transition-colors'}`}>About Us</NavLink>
+      <nav className="hidden md:flex items-center gap-8 font-display text-sm font-bold uppercase tracking-tight text-white/80">
+        <NavLink to="/" className={`${location.pathname === '/' ? 'text-emerald-500' : 'hover:text-emerald-400 transition-colors'}`}>Home</NavLink>
+        <NavLink to="/category?cat=BOARDS" className={`${currentCat === 'BOARDS' ? 'text-emerald-500' : 'hover:text-emerald-400 transition-colors'}`}>Boards</NavLink>
+        <NavLink to="/category?cat=SENSOR MODULES" className={`${currentCat === 'SENSOR MODULES' ? 'text-emerald-500' : 'hover:text-emerald-400 transition-colors'}`}>Modules</NavLink>
+        <NavLink to="/category?cat=COMPONENTS" className={`${currentCat === 'COMPONENTS' ? 'text-emerald-500' : 'hover:text-emerald-400 transition-colors'}`}>Components</NavLink>
+        <NavLink to="/category?cat=SWASTIK KITS" className={`${currentCat === 'SWASTIK KITS' ? 'text-emerald-500' : 'hover:text-emerald-400 transition-colors'}`}>About Us</NavLink>
       </nav>
 
       <div className="flex items-center gap-2">
         <div ref={searchRef} className="relative hidden lg:block mr-2">
           <form onSubmit={handleSearch} className="relative">
-            <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg">search</span>
+            <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-white/50 text-lg">search</span>
             <input 
               type="text" 
               value={searchQuery}
@@ -104,7 +104,7 @@ const Navbar = () => {
               }}
               onFocus={() => setIsSearching(true)}
               placeholder="Search products..." 
-              className="pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-xl text-sm outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all w-64"
+              className="pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm text-white outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 transition-all w-64 placeholder:text-white/30"
             />
           </form>
 
@@ -134,10 +134,10 @@ const Navbar = () => {
             </div>
           )}
         </div>
-        <button onClick={() => navigate('/category')} className="material-symbols-outlined text-outline p-2 hover:text-primary transition-colors lg:hidden">
+        <button onClick={() => navigate('/category')} className="material-symbols-outlined text-white/70 p-2 hover:text-emerald-400 transition-colors lg:hidden">
           search
         </button>
-        <NavLink to="/cart" className="relative p-2 text-primary hover:bg-surface-container-low rounded-lg transition-colors">
+        <NavLink to="/cart" className="relative p-2 text-white/90 hover:bg-white/5 rounded-lg transition-colors">
           <span className="material-symbols-outlined">shopping_cart</span>
           {getCartCount() > 0 && (
             <span className="absolute top-1 right-1 bg-secondary text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
@@ -149,19 +149,19 @@ const Navbar = () => {
         {currentUser ? (
           <div className="flex items-center gap-2 ml-2">
             <div className="hidden sm:block text-right">
-              <p className="text-[10px] font-black text-outline uppercase tracking-widest leading-none">Engineer</p>
-              <p className="text-sm font-bold text-on-surface truncate max-w-[100px]">{currentUser.displayName || 'User'}</p>
+              <p className="text-[10px] font-black text-white/50 uppercase tracking-widest leading-none">Engineer</p>
+              <p className="text-sm font-bold text-white truncate max-w-[100px]">{currentUser.displayName || 'User'}</p>
             </div>
             <button 
               onClick={handleLogout}
-              className="material-symbols-outlined text-outline p-2 hover:text-error transition-colors"
+              className="material-symbols-outlined text-white/70 p-2 hover:text-red-400 transition-colors"
               title="Logout"
             >
               logout
             </button>
           </div>
         ) : (
-          <NavLink to="/login" className="material-symbols-outlined text-outline p-2 hover:text-primary transition-colors">
+          <NavLink to="/login" className="material-symbols-outlined text-white/70 p-2 hover:text-emerald-400 transition-colors">
             account_circle
           </NavLink>
         )}
